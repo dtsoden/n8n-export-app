@@ -75,16 +75,17 @@
       <div class="explainer-inner">
         <div class="explainer-eyebrow">90 seconds</div>
         <h2>See it in action</h2>
-        <div class="video-frame">
-          <video
-            controls
-            preload="metadata"
-            playsinline
-            poster="assets/social-card.png">
-            <source src="assets/explainer.mp4" type="video/mp4" />
-            Your browser doesn't support embedded video. <a href="assets/explainer.mp4">Download the explainer</a> instead.
-          </video>
-        </div>
+        <button
+          type="button"
+          class="video-frame video-facade"
+          id="videoFrame"
+          data-yt-id="LQ3NZxfy0r0"
+          aria-label="Play explainer video on YouTube">
+          <img class="video-poster" src="assets/social-card.png" alt="n8n Export Wizard explainer" />
+          <span class="video-play-btn" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </button>
       </div>
     </section>
 

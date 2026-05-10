@@ -56,4 +56,30 @@
   // Footer year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  // YouTube facade: replace the poster button with the iframe on click.
+  // This keeps the (heavy) YouTube embed off the page until a visitor
+  // actually wants to watch, and lets us show our own branded poster
+  // instead of YouTube's default thumbnail.
+  const frame = document.getElementById('videoFrame');
+  if (frame && frame.dataset.ytId) {
+    frame.addEventListener('click', function loadYouTube() {
+      frame.removeEventListener('click', loadYouTube);
+      const id = encodeURIComponent(frame.dataset.ytId);
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+      iframe.title = 'n8n Export Wizard explainer';
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      // Replace the button content with the iframe; keep the rounded frame.
+      frame.innerHTML = '';
+      frame.replaceWith((function () {
+        const wrap = document.createElement('div');
+        wrap.className = 'video-frame';
+        wrap.appendChild(iframe);
+        return wrap;
+      })());
+    });
+  }
 })();
