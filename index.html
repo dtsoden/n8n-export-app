@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>n8n Export Wizard — Workflow & credential migration for n8n</title>
+    <meta name="description" content="Free desktop app to export and import n8n workflows and credentials between SQLite databases and remote n8n instances. Cross-instance migration without spinning up the source n8n." />
+    <link rel="icon" type="image/png" href="assets/icon.png" />
+    <meta property="og:title" content="n8n Export Wizard" />
+    <meta property="og:description" content="Cross-instance n8n workflow & credential migration. Free." />
+    <meta property="og:image" content="assets/icon.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topnav">
+      <a class="brand" href="#top">
+        <img src="assets/icon.png" alt="" width="36" height="36" />
+        <span>n8n Export Wizard</span>
+      </a>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#download">Download</a>
+        <a href="https://github.com/dtsoden/n8n-export-app" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <img class="hero-icon" src="assets/icon.png" alt="n8n Export Wizard icon" width="160" height="160" />
+        <div class="badge">Free · Code-signed · Personal &amp; corporate use</div>
+        <h1>Migrate n8n workflows and credentials in minutes, not hours.</h1>
+        <p class="lede">
+          A point-and-click desktop app for exporting workflows and credentials out of any n8n
+          SQLite database, or pulling them live from a remote n8n via the Public API. Push them
+          into another instance without spinning up the source n8n.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" id="primaryDownload" href="#download">
+            <span class="btn-icon">⬇</span>
+            <span>
+              <strong id="primaryDownloadLabel">Download for Windows</strong>
+              <small id="primaryDownloadSub">Signed installer · v<span id="versionBadge">latest</span></small>
+            </span>
+          </a>
+          <a class="btn btn-ghost btn-lg" href="#features">See what it does</a>
+        </div>
+        <p class="trust">Code-signed via Azure Trusted Signing. Cert chain ends at <strong>David Soden</strong>; SmartScreen and most antivirus tools recognize the signature on first run.</p>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="section-head">
+        <h2>What it does</h2>
+        <p>Reads from a SQLite database <em>or</em> a live n8n instance. Exports to disk <em>or</em> pushes to another running n8n. Cross-instance, key-aware credential handling included.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">📁</div>
+          <h3>Two source modes</h3>
+          <p>Read directly from a local <code>database.sqlite</code> file (the format every n8n instance writes to), or connect to a running n8n via its Public API with a URL and key. Toggle between the two without disconnecting.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🧬</div>
+          <h3>Workflows: portable JSON</h3>
+          <p>Output matches what the n8n editor's "Download" button produces, so the file pastes straight into the canvas, imports via "Import from File", or works with <code>n8n import:workflow</code>. Server-managed fields are stripped automatically so cross-instance imports never break.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🔐</div>
+          <h3>Credentials, encrypted or decrypted</h3>
+          <p>Default export is the encrypted blob (CLI-compatible, ideal for same-instance restore). Tick "Decrypt" with the source instance's encryption key to produce plaintext JSON for cross-instance migration. The target instance re-encrypts with its own key on import.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🚀</div>
+          <h3>Push directly to another n8n</h3>
+          <p>From the export modal pick "Push to a remote n8n instance" — the app POSTs each item to the target's Public API. For credentials, the target re-encrypts on receipt. Ideal for staging → production promotion or migrating between hosts.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">📥</div>
+          <h3>Import local JSON files</h3>
+          <p>Already have JSON files from <code>n8n export:workflow</code> or another tool? Switch to Remote API mode and use the Import workflows tab to push files (or a whole folder) into your connected instance with one click.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">📜</div>
+          <h3>Built-in logs for support</h3>
+          <p>Every run writes to a rotating log file. The Logs button in the top bar opens its location, so when something goes wrong you can attach the log to your bug report. Portable saves logs next to the .exe; installed saves to <code>%APPDATA%</code>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="how" id="how-it-works">
+      <div class="section-head">
+        <h2>How it works</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <span class="step-num">1</span>
+          <div>
+            <h3>Pick a source</h3>
+            <p>Click the <strong>DB</strong> chip to load a <code>database.sqlite</code> file, or the <strong>API</strong> chip to connect to a running n8n with a URL and API key.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <div>
+            <h3>Pick what to move</h3>
+            <p>Workflows or credentials, single or many. Filter by name or tag, select with checkboxes.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <div>
+            <h3>Pick a destination</h3>
+            <p>Save to local JSON files, or push directly to a remote n8n instance via the Public API. Done.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="download" id="download">
+      <div class="section-head">
+        <h2>Download</h2>
+        <p>Always serves the latest release. No registration, no telemetry.</p>
+      </div>
+      <div class="download-grid">
+        <a class="dl-card" data-platform="win-installer" href="https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n.Export.Wizard.Setup.exe">
+          <div class="dl-os">Windows</div>
+          <div class="dl-name">Installer</div>
+          <div class="dl-meta">.exe · NSIS · adds Start Menu shortcut</div>
+          <div class="dl-cta">Download</div>
+        </a>
+        <a class="dl-card" data-platform="win-portable" href="https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n.Export.Wizard.Portable.exe">
+          <div class="dl-os">Windows</div>
+          <div class="dl-name">Portable</div>
+          <div class="dl-meta">.exe · single file · runs from anywhere</div>
+          <div class="dl-cta">Download</div>
+        </a>
+        <a class="dl-card" data-platform="mac-arm" href="https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n.Export.Wizard-arm64.dmg">
+          <div class="dl-os">macOS</div>
+          <div class="dl-name">Apple Silicon</div>
+          <div class="dl-meta">.dmg · arm64 · M-series Macs</div>
+          <div class="dl-cta">Download</div>
+        </a>
+        <a class="dl-card" data-platform="mac-x64" href="https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n.Export.Wizard-x64.dmg">
+          <div class="dl-os">macOS</div>
+          <div class="dl-name">Intel</div>
+          <div class="dl-meta">.dmg · x64 · 2020 and earlier Macs</div>
+          <div class="dl-cta">Download</div>
+        </a>
+      </div>
+      <p class="release-link">Looking for an older build, checksums, or raw assets? <a href="https://github.com/dtsoden/n8n-export-app/releases" target="_blank" rel="noopener">All releases on GitHub →</a></p>
+    </section>
+
+    <section class="license">
+      <div class="license-inner">
+        <h2>Licensing</h2>
+        <div class="license-grid">
+          <div>
+            <h3>Application — free</h3>
+            <p>Free to download and use for both personal and corporate purposes. No registration, no telemetry, no nag screens.</p>
+          </div>
+          <div>
+            <h3>Source code — commercial</h3>
+            <p>Source is licensed commercially, distributed only by direct arrangement. If your company would like to license the source for internal use, modification, white-labeling, or extension, contact me.</p>
+            <p class="contact"><a href="mailto:me@davidsoden.com">me@davidsoden.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p>© <span id="year">2026</span> David Soden · <a href="https://github.com/dtsoden/n8n-export-app" target="_blank" rel="noopener">GitHub</a> · <a href="mailto:me@davidsoden.com">me@davidsoden.com</a></p>
+      <p class="disclaimer">n8n is a trademark of n8n.io. This is an independent tool and is not affiliated with or endorsed by n8n.io.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
