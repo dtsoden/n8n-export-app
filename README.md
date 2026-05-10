@@ -10,12 +10,14 @@ A free desktop app to **export and import n8n workflows and credentials** betwee
 |---|---|
 | Windows installer | [n8n Export Wizard Setup.exe](https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n.Export.Wizard.Setup.exe) |
 | Windows portable | [n8n Export Wizard Portable.exe](https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n.Export.Wizard.Portable.exe) |
-| macOS Apple Silicon | _coming soon_ |
-| macOS Intel | _coming soon_ |
+| macOS Apple Silicon | [n8n Export Wizard-arm64.dmg](https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n.Export.Wizard-arm64.dmg) |
+| macOS Intel | [n8n Export Wizard-x64.dmg](https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n.Export.Wizard-x64.dmg) |
 
 The links above always resolve to the **latest release** — bookmark them and they'll keep working through every version bump.
 
 Windows binaries are **code-signed** through Azure Trusted Signing; the certificate chain ends at the verified identity **David Soden**. SmartScreen and standard antivirus tools recognise the signature on first run, so you should not see any "unknown publisher" warnings.
+
+macOS binaries are **Developer ID-signed** and **notarized by Apple** under the verified identity **David Soden** (Team ID `7VLQ662F6L`). On a fresh download, double-click the `.app` and it launches with no Gatekeeper warning.
 
 ## What it does
 
