@@ -54,8 +54,9 @@
         <h1>Migrate n8n workflows and credentials in minutes, not hours.</h1>
         <p class="lede">
           A point-and-click desktop app for exporting workflows and credentials out of any n8n
-          SQLite database, or pulling them live from a remote n8n via the Public API. Push them
-          into another instance without spinning up the source n8n.
+          <strong>SQLite</strong> database, a live <strong>Postgres-backed</strong> instance,
+          or a running n8n via its <strong>Public API</strong>. Push them into another instance
+          without spinning up the source n8n.
         </p>
         <div class="hero-cta">
           <a class="btn btn-primary btn-lg" id="primaryDownload" href="#download">
@@ -102,14 +103,20 @@
     <section class="features" id="features">
       <div class="section-head">
         <h2>What it does</h2>
-        <p>Reads from a SQLite database <em>or</em> a live n8n instance. Exports to disk <em>or</em> pushes to another running n8n. Cross-instance, key-aware credential handling included.</p>
+        <p>Reads from a SQLite database, a live Postgres-backed n8n, <em>or</em> the n8n Public API. Exports to disk <em>or</em> pushes straight into another running instance. Cross-instance, key-aware credential handling included.</p>
       </div>
 
       <div class="grid">
         <article class="card">
           <div class="card-icon" aria-hidden="true">📁</div>
-          <h3>Two source modes</h3>
-          <p>Read directly from a local <code>database.sqlite</code> file (the format every n8n instance writes to), or connect to a running n8n via its Public API with a URL and key. Toggle between the two without disconnecting.</p>
+          <h3>Three source modes</h3>
+          <p>Read directly from a local <code>database.sqlite</code> file, connect to a <strong>Postgres-backed n8n</strong> (production deployments), or talk to a running instance via its Public API with a URL and key. Toggle without disconnecting — all three can be configured at the same time.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🛡️</div>
+          <h3>Read-only by design</h3>
+          <p>For Postgres sources the wizard forces every session into <code>default_transaction_read_only = ON</code> at the protocol level. Postgres itself rejects writes regardless of the role's permissions. The wizard's code only ever issues <code>SELECT</code> queries anyway — but if someone hands over a write-capable role by mistake, nothing destructive can happen.</p>
         </article>
 
         <article class="card">
@@ -153,7 +160,7 @@
           <span class="step-num">1</span>
           <div>
             <h3>Pick a source</h3>
-            <p>Click the <strong>DB</strong> chip to load a <code>database.sqlite</code> file, or the <strong>API</strong> chip to connect to a running n8n with a URL and API key.</p>
+            <p>Click the <strong>DB</strong> chip to load a <code>database.sqlite</code> file or connect to a Postgres-backed n8n (read-only enforced). Click the <strong>API</strong> chip to talk to a running n8n with a URL and API key.</p>
           </div>
         </li>
         <li>
