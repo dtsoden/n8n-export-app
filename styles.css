@@ -130,6 +130,13 @@ p { margin: 0 0 1em 0; color: var(--ink-2); }
 }
 .trust { font-size: 0.9rem; color: var(--muted); margin-top: 8px; }
 .trust strong { color: var(--ink); }
+.ph-badge { margin: 18px 0 14px 0; line-height: 0; }
+.ph-badge a {
+  display: inline-block;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.ph-badge a:hover { transform: translateY(-1px); opacity: 0.92; }
+.ph-badge img { display: inline-block; max-width: 100%; height: auto; }
 
 /* ===== buttons ===== */
 .btn {
