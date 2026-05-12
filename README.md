@@ -8,10 +8,10 @@ A free desktop app to **export and import n8n workflows and credentials** betwee
 
 | Platform | File |
 |---|---|
-| Windows installer | [n8n Export Wizard Setup.exe](https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n.Export.Wizard.Setup.exe) |
-| Windows portable | [n8n Export Wizard Portable.exe](https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n.Export.Wizard.Portable.exe) |
-| macOS Apple Silicon | [n8n Export Wizard-arm64.dmg](https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n.Export.Wizard-arm64.dmg) |
-| macOS Intel | [n8n Export Wizard-x64.dmg](https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n.Export.Wizard-x64.dmg) |
+| Windows installer | [n8n-Export-Wizard-Setup.exe](https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n-Export-Wizard-Setup.exe) |
+| Windows portable | [n8n-Export-Wizard-Portable.exe](https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n-Export-Wizard-Portable.exe) |
+| macOS Apple Silicon | [n8n-Export-Wizard-arm64.dmg](https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n-Export-Wizard-arm64.dmg) |
+| macOS Intel | [n8n-Export-Wizard-x64.dmg](https://github.com/dtsoden/n8n-export-app/releases/latest/download/n8n-Export-Wizard-x64.dmg) |
 
 The links above always resolve to the **latest release** — bookmark them and they'll keep working through every version bump.
 
